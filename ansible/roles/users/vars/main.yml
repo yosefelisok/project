@@ -1,0 +1,14 @@
+# roles/users/vars/main.yml
+custom_groups:
+  - developers
+  - admins
+
+users:
+  - name: devops
+    shell: /bin/bash
+    state: present
+    password: password
+    groups:
+      - sudo
+      - developers
+

@@ -1,0 +1,7 @@
+# roles/static_files/tasks/main.yml
+- name: Copy static images
+  copy:
+    src: "{{ item }}"
+    dest: /usr/share/nginx/html/images/
+  loop: "{{ lookup('fileglob', 'static/images/*') }}"
+

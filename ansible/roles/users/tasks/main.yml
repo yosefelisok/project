@@ -1,0 +1,16 @@
+# roles/users/tasks/main.yml
+- name: Ensure groups exist
+  group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ custom_groups }}"
+
+- name: Ensure users exist
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    password: "{{ item.password | password_hash('sha512') }}"
+    state: "{{ item.state }}"
+  loop: "{{ users }}"
+

@@ -1,0 +1,12 @@
+# roles/zsh/tasks/main.yml
+- name: Install Zsh
+  apt:
+    name: zsh
+    state: present
+
+- name: Install Oh My Zsh
+  shell: |
+    sudo -u {{ item.name }} sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: item.shell == '/bin/zsh'
+  loop: "{{ users }}"
+

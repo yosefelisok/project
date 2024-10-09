@@ -1,0 +1,10 @@
+- hosts: all
+  become: true
+  roles:
+    - role: users
+    - role: ssh
+    - role: zsh
+    - role: packages
+    - role: nginx
+    - role: static_files
+

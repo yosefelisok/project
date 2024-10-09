@@ -1,0 +1,11 @@
+# roles/packages/tasks/main.yml
+- name: Install base utilities
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - htop
+    - ncdu
+    - git
+    - nano
+

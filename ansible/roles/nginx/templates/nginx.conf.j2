@@ -1,0 +1,14 @@
+# roles/nginx/templates/nginx.conf.j2
+server {
+    listen 80;
+
+    location /images {
+        root /usr/share/nginx/html;
+        autoindex on;
+        expires 1h;
+    }
+
+    gzip on;
+    access_log /var/log/nginx/access.log;
+}
+
